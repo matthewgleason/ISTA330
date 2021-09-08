@@ -1,4 +1,3 @@
-
 /*
 The array cookies represent the number of cookies that each kid has. 
 Given the array cookies and an integer extraCookies, determine whether there is a
@@ -9,7 +8,12 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
          and therfore each of the three kids will get 8 cookies.
  */
 
- var canGetEqualCookies = function(cookies, extraCookies) {
-     
-    
- };
+var canGetEqualCookies = function (cookies, extraCookies) {
+  cookies.sort((a, b) => a - b);
+  let max = cookies[cookies.length - 1];
+  let sum = 0;
+  for (var i = 0; i < cookies.length - 1; i++) {
+    sum += cookies[i];
+  }
+  return max <= (sum + extraCookies) / (cookies.length - 1);
+};
