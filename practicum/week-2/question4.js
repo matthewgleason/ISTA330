@@ -22,3 +22,6 @@ var howManyCommon = function (A, B) {
 
   return sum;
 };
+
+var test1 = howManyCommon("tek", "TTTERk");
+console.log(test1);
