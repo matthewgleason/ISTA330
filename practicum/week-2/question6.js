@@ -17,5 +17,5 @@ var median = function (input) {
   return (input[middle - 1] + input[middle]) / 2;
 };
 
-let test1 = median([1, 2, 3, 4, 6, 6, 7, 8]);
+let test6 = median([1, 2, 3, 4, 6, 6, 7, 8]);
 console.log(test1);

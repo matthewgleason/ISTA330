@@ -23,5 +23,5 @@ var minimalReduction = function (n) {
   }
 };
 
-let test1 = minimalReduction(13);
+let test5 = minimalReduction(13);
 console.log(test1);
