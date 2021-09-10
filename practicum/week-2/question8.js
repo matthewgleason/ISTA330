@@ -7,6 +7,4 @@ input: [23, 44, 12, 4]
 output: [1, 0, 1, 2]
 */
 
-var biggerAndEven = function(input) {
-
-};
+var biggerAndEven = function (input) {};
