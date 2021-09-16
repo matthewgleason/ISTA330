@@ -12,6 +12,22 @@ input: [3,5,3,3,5,1]
 output: 3
 */
 
-var d_integer = function(input) {
+var d_integer = function (input) {
+  let dict = {};
+  for (var i = 0; i < input.length; i++) {
+    dict[input[i]] = (dict[input[i]] || 0) + 1;
+  }
+  let max = 0;
+  for (key in dict) {
+    if (key == dict[key]) {
+      if (key > max) {
+        max = key;
+      }
+    }
+  }
+  if (max > 0) return max;
 
+  return -1;
 };
+
+console.log(d_integer([3, 5, 3, 3, 5, 1]));

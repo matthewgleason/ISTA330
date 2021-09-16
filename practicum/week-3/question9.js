@@ -12,6 +12,19 @@ The groups are: [1, 10], [2, 11], [3], [4], [5], [6], [7], [8], [9]
 so there are two groups with the largest size.
 */
 
-var largestGroupsCount = function(n) {
-
+var largestGroupsCount = function (n) {
+  if (n < 10) return 1;
+  let val = 10;
+  let retval = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
+  let i = 0;
+  while (val <= n) {
+    if (i >= retval.length) i = 0;
+    retval[i].push(val);
+    i++;
+    val++;
+  }
+  console.log(retval);
+  return retval[0].length;
 };
+
+console.log(largestGroupsCount(33));
