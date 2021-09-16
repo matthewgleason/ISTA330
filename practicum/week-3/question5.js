@@ -16,8 +16,18 @@ input: [12, 6, 2, 2, 2, 0]
 output: true
 */
 
-var isMonotonic = function(input) {
+var isMonotonic = function (input) {
+  let temp = input.slice(0);
+  let aTemp = input.slice(0);
+  let dTemp = input.slice(0);
 
+  let ascending = aTemp.sort((n, m) => n - m);
+  let descending = dTemp.sort((n, m) => m - n);
+
+  return (
+    temp.every((val, index) => val === ascending[index]) ||
+    temp.every((val, index) => val === descending[index])
+  );
 };
 
-console.log('hi');
+console.log(isMonotonic([12, 6, 2, 2, 2, 1]));
