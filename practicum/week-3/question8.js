@@ -25,7 +25,7 @@ var d_integer = function (input) {
       }
     }
   }
-  if (max > 0) return max;
+  if (max > 0) return parseInt(max);
 
   return -1;
 };

@@ -13,7 +13,7 @@ so there are two groups with the largest size.
 */
 
 var largestGroupsCount = function (n) {
-  if (n < 10) return 1;
+  if (n < 10) return 9;
   let val = 10;
   let retval = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
   let i = 0;
@@ -23,8 +23,8 @@ var largestGroupsCount = function (n) {
     i++;
     val++;
   }
-  console.log(retval);
-  return retval[0].length;
+  let outcome = retval.filter((n) => n.length === retval[0].length);
+  return outcome.length;
 };
 
-console.log(largestGroupsCount(33));
+console.log(largestGroupsCount(12));
