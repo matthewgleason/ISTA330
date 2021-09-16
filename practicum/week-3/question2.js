@@ -15,5 +15,8 @@ var largestSubarray = function (input) {
       subarray.push(input.slice(i, j).reduce((n, m) => n + m));
     }
   }
+  if (Math.max(...subarray) < input.sort((n, m) => n - m)[input.length - 1]) {
+    return input.sort((n, m) => n - m)[input.length - 1];
+  }
   return Math.max(...subarray);
 };
