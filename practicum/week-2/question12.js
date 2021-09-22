@@ -14,4 +14,30 @@ output: 4 because the following partition has the highest number of balanced sub
           'ab', 'aabb', 'ab', 'ab'
 */
 
+/*
+  For this question you first need to have a function that lists all possible partitions 
+  for any given string. Here is the function that does that. You can call this function in your 
+  maxBalanceNumber function.
+*/
+function allPartitions(input) {
+  if (input.length === 1) {
+    return [[input]];
+  }
+  let result = allPartitions(input.slice(0, -1));
+  let n = result.length;
+  //deep copy the result array
+  let newPartitions = JSON.parse(JSON.stringify(result));
+  for (let i = 0; i < n; i++) {
+    newPartitions[i].push(input[input.length - 1]);
+  }
+  for (let i = 0; i < n; i++) {
+    result[i][result[i].length - 1] += input[input.length - 1];
+  }
+  return result.concat(newPartitions);
+}
+// Here is how you can use the utility function allPartitions:
+for (let partition of allPartitions("aba")) {
+  console.log(partition);
+}
+
 var maxBalanceNumber = function (input) {};
