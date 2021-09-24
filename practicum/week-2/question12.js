@@ -40,4 +40,23 @@ for (let partition of allPartitions("aba")) {
   console.log(partition);
 }
 
-var maxBalanceNumber = function (input) {};
+var maxBalanceNumber = function (input) {
+  if (input !== "") {
+    let num = 1;
+    let antiNum = 0;
+    let currLetter = input[0];
+    for (var i = 1; i < input.length; i++) {
+      if (input[i] === currLetter) {
+        num++;
+      } else {
+        antiNum++;
+        if (input[i + 1] !== currLetter) {
+          continue;
+        }
+        break;
+      }
+    }
+    return 1 + maxBalanceNumber(input.slice(num + antiNum));
+  }
+  return 0;
+};
