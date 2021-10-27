@@ -7,42 +7,73 @@
     <!--DO NOT CHANGE THE FOLLOWING LINES !!!-->
     <link rel="stylesheet" href="styles.css">
     <script src="https://habahram.github.io/ISTA330/practicum/week-8/tests.js" type="text/javascript"></script>
+
     <title>Document</title>
 </head>
 
 <body>
-   <div>
-       In the previous practicum you developed a <a href="https://restfulapi.net">REST API (imagequiz-serverside)</a> using Nodejs and 
-       Express and you updated your imagequiz to get the data from this API. In this practicum you will add a PostgreSQL database to
-       your API.
+    <div>
+        In the previous practicum, you developed a <a href="https://restfulapi.net">REST API</a> using Nodejs and
+        Express and you deployed your REST API on Heroku. In this practicum, you will add
+        a <a href="https://www.postgresql.org/about/">PostgreSQL</a> database to your imagequiz-backend API.
 
-       <ul>
-           <li>You deployed your "imagequiz-serverside" API to Heroku. On Heroku add a PostgreSQL database to your API.</li>
-           <li>
-            Use <a href="https://dbeaver.io/">DBeaver</a> to connect to your PostgreSQL. Craete a schema, name it 
-            imagequiz. Create the following tables in the schema imagequiz:
-            <ol>
-                <li>flowers(id, name, picture)</li>
-                <li>questions(id, flowerid, choices, answer) </li>
-                <li>quizzes (id, quiznumber, questionid)</li>
-                <li>customers (id, name, email, password)</li>
-                <li>scores (id, customerid, quizid, score)</li>
-            </ol>
-           </li>
-           <li>
-            Then modify your API so that it reads the flowers data and the quizzes data from the PostgreSQL databse. It should also write
-            the score data to the PostgreSQL databse.
-           </li>
-           <li>
-            Deploy your modifed API to Heroku.
-           </li>
-       </ul>
+        <ul>
+            <li>To attach a PostgreSQL database to your imagequiz-backend application, you need to navigate
+                to the Resources tab in the header of your napplication's dahsboard.
+                Then type Heroku Postgres into the Add-ons search field.
+                Then select the suggested Heroku Postgres add-on from the dropdown.
+                The next popup asks you to choose a pricing plan for the database.
+                Select the Hobby Dev - Free plan and click Provision.
+            </li>
+            <li>
+                To find the credentials and the connection URL for the PostgreSQL database,
+                you need to navigate to the Resources tab in your application's dashboard on heroku and
+                select the Heroku Postgres resource. This brings you to the configuration screen of the your PostgreSQL
+                database.
+                Now select the Settings tab in the header of that screen.
+                Click the View Credentials button to see the credentials of your PostgreSQL database.
+                You can use these credentials to connect to your PostgreSQL database from DBeaver client tool.
+            </li>
+            <li>
+                <a href="https://dbeaver.io/about/">DBeaver</a> is a database tool using which you can connect to
+                your database and run sql commands on your database. Download and install a free community edition of
+                DBeaver
+                using <a href="https://dbeaver.io/download/">DBeaver official website</a>.
+            </li>
+            <li>To be able to use relational databases, we need to use the <a href="https://www.w3schools.com/sql/">SQL
+                    language</a>. Refer to the lecture 'Adding a postgreSQL database to Express/Node.js API' on d2l for 
+                    more information about this language and how it is used to manipulate/query data in a relational database.
+            </li>
+            <li>
+                Using DBeaver, connect to your postgreSQL database on heroku and create the following tables with the
+                specified columns:
+                <ol>
+                    <li>customer: id, name, email, password 
+                        (note: never save the actual password into the database. 
+                        You should always encrypt the password and save the hashed password.)</li>
+                    <li>question: id, picture, choices, answer</li>
+                    <li>category: id, name</li>
+                    <li>quiz: id, name, category_id</li>
+                    <li>quiz_question: quiz_id, question_id</li>
+                </ol>
+            </li>
+            <li>
+              Modify your imagequiz-backend to insert/get data to/from the postgreSQL database that you added to your imagequiz-backend
+              API. Refer to the lecture 'Adding a postgreSQL database to Express/Node.js API' to learn how to complete this step.
+            </li>
+            <li>
+                Deploy your modifed imagequiz-backend API to heroku.
+            </li>
 
-       For more information on how to do this practicum refer to the lectures "How to create tables in your PostgreSQL database"
-       and "How to connect to a PostgreSQL database from an API".
-       
-       
-   </div>
+        </ul>
+
+
+
+
+    </div>
+    <div id="test-the-api">
+
+    </div>
     <div class="iframe-container">
         <iframe id="myApplicationFrame" src="" allowfullscreen></iframe>
     </div>
