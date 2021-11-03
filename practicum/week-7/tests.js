@@ -82,7 +82,9 @@ window.onload = () => {
     .then(() => fetch(`${api}/quizzes`))
     .then((x) => x.json())
     .then((x) => {
+      console.log(x);
       quizId = x[Math.floor(Math.random() * x.length)].id;
+      console.log(quizId);
       return x;
     })
     .then((x) =>
