@@ -11,7 +11,7 @@ window.onload = () => {
     //let api = `http://localhost:4002`;
     let testTaker = names[random];
     let testTakerEmail = testTaker + '@gmail.com';
-    let password = 123;
+    let password = "123";
     let quizId = -1;
     let testDiv = document.getElementById('test-the-api');
     testDiv.innerHTML += `<h2>****************************************************************************************</h2>`;
@@ -64,6 +64,7 @@ window.onload = () => {
             quizId = x[Math.floor(Math.random() * x.length)].id;
             return x;
         })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /quizzes get method: ${e}</h2>`)
         .then(x => fetch(`${api}/score`, {
             method: 'POST',
             headers: {
@@ -78,7 +79,16 @@ window.onload = () => {
         }))
         .then(x => x.json())
         .then(x => testDiv.innerHTML += `<h2>The score for the test taker ${testTakerEmail} for quiz ${quizId} was submitted.</h2>`)
-        .catch(e => testDiv.innerHTML += `<h2>Error in /score post method: ${e}</h2>`)
+        .catch(e => {
+            let scoreSent = JSON.stringify({
+                quizTaker: testTakerEmail,
+                quizId: quizId,
+                score: 5
+            });
+            console.log(`error in the post method /score: `);
+            console.log(scoreSent); 
+            testDiv.innerHTML += `<h2>Error in /score post method: ${e}</h2>`;
+        })
         .then(x => fetch(`${api}/scores/${testTakerEmail}/${quizId}`))
         .then(x => x.json())
         .then(x => testDiv.innerHTML += `<h2>The test taker ${testTakerEmail} has ${x.length} submitted scores for quiz ${quizId}.</h2>`)
