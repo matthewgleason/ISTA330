@@ -12,6 +12,13 @@
 6. [Week 6](practicum/week-6/index.html)
 7. [Week 7](practicum/week-7/index.html)
 8. [Week 8](practicum/week-8/index.html)
+9. [Week 9](practicum/week-9/index.html)
+10. [Week 10](practicum/week-10/index.html)
+11. [Week 11](practicum/week-11/index.html)
+
+
+### Projects
+1. [Project 1](projects/project-1/index.html)
 
 
 
